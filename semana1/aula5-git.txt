@@ -1,0 +1,13 @@
+git commit
+git checkout
+git merge
+git rebase
+git branch
+git branch -f
+git reset
+git revert
+git clone
+git fetch
+git fakeTeamwork
+git pull
+git push
