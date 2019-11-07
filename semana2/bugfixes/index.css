@@ -73,6 +73,11 @@ div img {
     padding-top: 100px;
 }
 
+#container-de-descricao > p {
+    width: 210px;
+    margin: 0 auto;
+}
+
 #container-de-descricao>ol {
     padding: 15px 0px;
 }
