@@ -22,10 +22,15 @@ input {
     width: 500px;
     border: none;
     border-bottom: 1.5px solid grey;
+    outline: none;
 }
 
 button:focus {
     color: white;
+}
+
+button {
+    outline: none;
 }
 
 img {
