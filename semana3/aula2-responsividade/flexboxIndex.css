@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    background-color: red;
+    height: 75px;
+}
+
+.container, .special-ctn {
+    display: flex;
+    justify-content: space-between;
+}
+
+div > div {
+    margin: 1.5%;
+    border: 1px solid black;
+    width: 30%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.special-ctn > div {
+    width: 47%;
+    height: 300px;
+}
+
+.ctn-azul {
+    background-color: blue;
+}
+
+.ctn-amarelo {
+    background-color: yellow;
+}
+
+.ctn-verde {
+    background-color: green;
+}
+
+.ctn-preto {
+    background-color: black;
+    color: white;
+}
+.ctn-branco {
+    background-color: white;
+}
+
+@media screen and (min-device-width : 421px) and (max-device-width : 800px) {
+    .container {
+        flex-wrap: wrap;
+        justify-content: space-around;         
+    }
+
+    .container > div {
+        width: 47%;
+    }
+
+    .container > div:last-child {
+        width: 100%;
+    }
+
+}
+
+
+@media screen and (max-device-width : 420px) {
+    .container, .special-ctn {
+        flex-wrap: wrap;            
+    }
+
+    .container div, .special-ctn div {
+        width: 100%;
+    }
+}
+
