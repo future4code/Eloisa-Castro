@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+header {
+    background-color: orange;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 40px 0 20px;
+}
+
+input {
+    width: 180px;
+    height: 40px;
+    padding: 0 10px;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+article {
+    border: 1px solid darkgreen;
+    margin: 10px 1%;
+    width: 23%;
+}
+
+img {
+    width: 100%;
+}
+
+.link-media:visited {
+    color: rgb(51, 51, 51)
+}
+
+.link-media:link, .link-media:hover, 
+.link-media:active {
+    color: black;
+    text-decoration: none;
+}
+
+.nome-media {
+    padding: 20px 8px;
+}
+
+h3 {
+    margin: 20px 25px;
+}
+
+video {
+    margin: 0 25px;
+    width: 70%;
+}
+
+.botao {
+    margin: 0 25px;
+    width: 70%;
+    text-align: center;
+}
+
+.botao > a {
+    display: block;
+    margin: 15px;
+}
+
+button {
+    font-size: 16px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: rgb(243, 127, 82);
+    color: white;
+    font-weight: 600;
+}
+
+footer {
+    background-color: rgb(70, 70, 70);
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-redes {
+    text-align: center;
+}
+
+.menu-redes > p {
+    font-size: 18px;
+    font-weight: normal;
+    text-align: right;
+}
+
+.menu-redes > img {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    article {
+        width: 48%;
+    }
+
+    video {
+        width: 95%;
+        margin: 0 2%;
+    }
+
+    .botao {
+        width: 95%;
+        margin: 0 2%;
+    }
+}
+
+@media screen and (max-device-width : 480px) {
+    input {
+        width: 50%;
+    }
+
+    article {
+        width: 100%;
+    }
+
+    video {
+        width: 95%;
+        margin: 0 2%;
+    }
+
+    .botao {
+        width: 95%;
+        margin: 0 2%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer > p {
+        margin-bottom: 15px;
+    }
+}
