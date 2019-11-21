@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#alunos-cadastrados {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.alunos {
+    padding: 20px 5px;
+    margin: 15px;
+}
