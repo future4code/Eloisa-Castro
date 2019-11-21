@@ -18,7 +18,21 @@ function aoClicarCriarPost() {
     autorDoPost.value = ""
     conteudoDoPost.value = ""
     console.log(arrayPosts)
-    /* console.log(novoPost.titulo)
-    console.log(novoPost.autor)
-    console.log(novoPost.conteudo) */
+    inserirPosts()
+}
+
+function inserirPosts() {
+    const container = document.getElementById("container-de-posts")
+    container.innerHTML = ""
+    for (let item of arrayPosts) {
+        container.innerHTML += criaPost(item)
+    }
+}
+
+function criaPost(itemPost) {
+    return "<div class='post-individual'>" +
+        "<h3>" + itemPost.titulo + "</h3>" +
+        "<p><i>" + itemPost.autor + "</i></p>" + 
+        "<p>" + itemPost.conteudo + "</p>"+
+        "</div>"
 }

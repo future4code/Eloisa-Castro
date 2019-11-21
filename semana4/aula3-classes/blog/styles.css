@@ -51,3 +51,7 @@ button {
     padding: 5px;
     border-left: 6px solid rgb(82, 115, 223);
 }
+
+.post-individual > p {
+    margin-top: 4px;
+}
