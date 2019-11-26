@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.container-de-busca {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagem-de-busca {
+  border: 1px solid rgb(201, 201, 201);
+  height: 40px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagem-de-busca > img {
+  width: 30px;
+}
+
+.container-de-busca > input {
+  width: 450px;
+  height: 40px;
+  padding: 0 10px;
+}
+
+.container-login {
+  border: 1px solid rgb(59, 168, 231);
+  color: rgb(59, 168, 231);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.container-login > img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.main-container {
+  display: flex;
+}
+
+nav {
+  width: 700px;
+}
+
+nav > p {
+  padding: 5px;
+}
+
+nav > p:nth-child(4) {
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 10px 0 30px 0;
+  background-color: rgb(240, 240, 240);
+}
+
+article {
+  width: 24%;
+  margin: 10px 0;
+}
+
+article > img {
+  width: 100%;
+}
+
+.dados-media {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 150px;
+}
+
+.dados-media > img {
+  width: 15%;
+  margin: 10px;
+}
+
+.nome-media {
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.autor-media, .visualizacoes {
+  color: darkslategray;
+}
