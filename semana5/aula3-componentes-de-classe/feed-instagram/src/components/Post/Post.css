@@ -1,0 +1,30 @@
+.post-container {
+    width: 40vw;
+    border: 1px solid black;
+}
+
+.post-container > img {
+    width: 100%;
+}
+
+.user-container {
+    display: flex;
+    margin: 10px;
+}
+
+.user-container > img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.container-interativo {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    background-color: white;
+}
+
