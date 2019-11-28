@@ -1,0 +1,48 @@
+.post-container {
+    width: 40vw;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.post-container > img {
+    width: 100%;
+}
+
+.user-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.user-container > img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.container-interativo {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.container-interativo > div {
+    display: flex;
+}
+
+.container-interativo img {
+    margin-right: 10px;
+}
+
+.container-comentario {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.container-comentario > input {
+    margin-right: 5px;
+    padding: 1px;
+}
+
+.container-comentario > button {
+    padding: 1px 5px;
+}
