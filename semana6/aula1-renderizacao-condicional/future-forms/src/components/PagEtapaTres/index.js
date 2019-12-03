@@ -37,7 +37,6 @@ function PagEtapaTres() {
                 <option>Curso de inglês</option>
                 <option>Não fiz nenhum curso complementar</option>
             </SelectForm>
-
         </MainContainer>
     )
 }
