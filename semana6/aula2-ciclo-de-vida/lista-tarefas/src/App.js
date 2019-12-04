@@ -130,6 +130,22 @@ class App extends React.Component {
           )})
         break;
       case 'completas':
+        const arrayCompletas = this.state.arrayTarefas.filter( el => {
+          return el.completa
+        })
+        listaRenderizada = arrayCompletas.map(el => {
+          return (
+            <TarefaIndiviual statusTarefa={el.completa} key={el.id} onClick={() => this.completarTarefa(el.id)}>{el.texto}</TarefaIndiviual>
+        )})
+        break;
+      case 'pendentes':
+        const arrayPendentes = this.state.arrayTarefas.filter( el => {
+          return !el.completa
+        })
+        listaRenderizada = arrayPendentes.map(el => {
+          return (
+            <TarefaIndiviual statusTarefa={el.completa} key={el.id} onClick={() => this.completarTarefa(el.id)}>{el.texto}</TarefaIndiviual>
+        )})
         break;
       
       default:
