@@ -120,6 +120,17 @@ class App extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    const arrayTarefasEmString = JSON.stringify(this.state.arrayTarefas)
+    localStorage.setItem("tarefasSalvas", arrayTarefasEmString)
+  }
+
+  componentDidMount() {
+    const tarefasComoString = localStorage.getItem("tarefasSalvas")
+    const tarefasComoArray = JSON.parse(tarefasComoString)
+    this.setState({arrayTarefas: tarefasComoArray})
+  }
+
   render() {
     let listaRenderizada
     switch (this.state.controleFiltro) {
@@ -150,7 +161,7 @@ class App extends React.Component {
       
       default:
         break;
-    }
+    };
     return (
       <MainContainer>
         <h1>Lista de Tarefas</h1>
