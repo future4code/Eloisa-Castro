@@ -1,8 +1,19 @@
 import React from 'react';
-import axios from 'axios'
 import './App.css';
+import styled from 'styled-components'
 import ContainerForm from './components/ContainerForm/ContainerForm';
 import ContainerUsuarios from './components/ContainerUsuarios/ContainerUsuarios';
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const BotaoPagina = styled.button`
+  margin-top: 5px;
+  padding: 2px 20px;
+`
 
 class App extends React.Component {
   
@@ -25,10 +36,10 @@ class App extends React.Component {
     const textoBotao = this.state.setupPagina === "cadastro" ? "Ir para lista de usuários" : "Ir para formulário de cadastro"
     const ConteudoExibido = this.state.setupPagina === "cadastro" ? ContainerForm : ContainerUsuarios
     return (
-      <div>
-        <button onClick={this.aoClicarParaTrocarDePagina}>{textoBotao}</button>
+      <MainContainer>
+        <BotaoPagina onClick={this.aoClicarParaTrocarDePagina}>{textoBotao}</BotaoPagina>
         <ConteudoExibido />
-      </div>
+      </MainContainer>
     );
   }
 }
