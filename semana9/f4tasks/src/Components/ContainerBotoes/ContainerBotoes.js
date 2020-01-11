@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import {
-    completarTodasTarefas,
-    removerCompletas,
+    alterarStatusTodas,
+    deletarTarefasCompletas,
+    filtrarTarefasPendentes,
+    filtrarTodasTarefas,
+    filtrarTarefasCompletas
     } from '../../actions/todos'
 
 const MainContainer = styled.div`
@@ -36,27 +39,19 @@ const ContainerFiltros = styled.div`
 `;
 
 function ContainerBotoes(props) {
-    const clicarCompletar = () => {
-        props.completaTodas()
-    }
-
-    const clicarRemoverCompletas = () => {
-        props.excluiCompletas()
-    }
-
     return (
         <MainContainer>
-            <BotaoTarefas onClick={clicarCompletar}>
+            <BotaoTarefas onClick={() => props.completaTodas()}>
                 Marcar todas como completas
             </BotaoTarefas>
 
             <ContainerFiltros>
-                <BotaoFiltro>Todas</BotaoFiltro>
-                <BotaoFiltro>Pendentes</BotaoFiltro>
-                <BotaoFiltro>Completas</BotaoFiltro>
+                <BotaoFiltro onClick={() => props.filtraTodasTarefas()}>Todas</BotaoFiltro>
+                <BotaoFiltro onClick={() => props.filtraIncompletas()}>Pendentes</BotaoFiltro>
+                <BotaoFiltro onClick={() => props.filtraCompletas()}>Completas</BotaoFiltro>
             </ContainerFiltros>
 
-            <BotaoTarefas onClick={clicarRemoverCompletas}>
+            <BotaoTarefas onClick={() => props.excluiCompletas()}>
                 Remover completas
             </BotaoTarefas>
         </MainContainer>
@@ -64,8 +59,11 @@ function ContainerBotoes(props) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    completaTodas: () => dispatch(completarTodasTarefas()),
-    excluiCompletas: () => dispatch(removerCompletas()),
+    completaTodas: () => dispatch(alterarStatusTodas()),
+    excluiCompletas: () => dispatch(deletarTarefasCompletas()),
+    filtraIncompletas: () => dispatch(filtrarTarefasPendentes()),
+    filtraTodasTarefas: () => dispatch(filtrarTodasTarefas()),
+    filtraCompletas: () => dispatch(filtrarTarefasCompletas())
 })
 
 export default connect(null, mapDispatchToProps)(ContainerBotoes);

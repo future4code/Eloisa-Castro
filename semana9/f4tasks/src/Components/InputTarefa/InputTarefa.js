@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { addTarefa } from '../../actions/todos';
+import { criarNovaTarefa } from '../../actions/todos';
 import { connect } from 'react-redux';
 
 const InputDaTarefa = styled.input`
@@ -48,7 +48,7 @@ class InputTarefa extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        adicionarTarefa: novaTarefa => dispatch(addTarefa(novaTarefa))
+        adicionarTarefa: novaTarefa => dispatch(criarNovaTarefa(novaTarefa))
       };
 }
 

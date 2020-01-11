@@ -1,61 +1,73 @@
-export const addTarefa = (novaTarefa) => {
-  return {
-    type: 'ADICIONAR_TAREFA',
-    payload: {
-      novaTarefa: novaTarefa
-    }
+import axios from "axios"
+
+const baseURL = 'https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/eloisa/todos'
+
+export const exibirTarefas = (tarefas) => ({
+  type: 'EXIBIR_TAREFAS',
+  payload: {
+    tarefas
   }
+})
+
+export const pegarTarefas = () => async (dispatch, getState) => {
+  const response = await axios.get(baseURL)
+  dispatch(exibirTarefas(response.data.todos))
 }
 
-export const completarTarefa = (idTarefa) => {
-  return {
-    type: 'COMPLETAR_TAREFA',
-    payload: {
-      idTarefa: idTarefa
-    }
-  }
+export const criarNovaTarefa = (tarefa) => async (dispatch, getState) => {
+  await axios.post(baseURL, { text: tarefa })
+  dispatch(pegarTarefas())
 }
 
-export const excluirTarefa = (idTarefa) => {
-  return {
-    type: 'REMOVER_TAREFA',
-    payload: {
-      idTarefa: idTarefa
-    }
-  }
+export const alterarStatusTarefa = (idTarefa) => async (dispatch, getState) => {
+  await axios.put(`${baseURL}/${idTarefa}/toggle`)
+  dispatch(pegarTarefas())
 }
 
-export const completarTodasTarefas = () => {
-  return {
-    type: 'COMPLETAR_TUDO',
-    payload: { }
+export const alterarStatusTodas = (idTarefa) => async (dispatch, getState) => {
+  const response = await axios.get(baseURL)
+  
+  const listaTarefasIncompleta = response.data.todos.filter (tarefa => {
+    return tarefa.done === false
+  })
+  
+  for(let el of listaTarefasIncompleta) {
+    await axios.put(`${baseURL}/${el.id}/toggle`)
   }
+  
+  dispatch(pegarTarefas())
 }
 
-export const removerCompletas = () => {
-  return {
-    type: 'REMOVER_COMPLETAS',
-    payload: { }
-  }
+export const deletarTarefa = (idTarefa) => async (dispatch, getState) => {
+  await axios.delete(`${baseURL}/${idTarefa}`)
+  dispatch(pegarTarefas())
 }
 
-export const filtrarTodasTarefas = () => {
-  return {
-    type: 'FILTRAR_TODAS',
-    payload: { }
-  }
+export const deletarTarefasCompletas = () => async (dispatch, getState) => {
+  await axios.delete(`${baseURL}/delete-done`)
+  dispatch(pegarTarefas())
 }
 
-export const filtrarTarefasPendentes = () => {
-  return {
-    type: 'FILTRAR_PENDENTES',
-    payload: { }
-  }
+export const filtrarTodasTarefas = (tarefa) => async (dispatch, getState) => {
+  dispatch(pegarTarefas())
 }
 
-export const filtrarTarefasCompletas = () => {
-  return {
-    type: 'FILTRAR_COMPLETAS',
-    payload: { }
-  }
+export const filtrarTarefasPendentes = () => async (dispatch, getState) => {
+  const response = await axios.get(baseURL)
+  
+  const listaTarefasPendentes = response.data.todos.filter (tarefa => {
+    return tarefa.done === false
+  })
+  
+  dispatch(exibirTarefas(listaTarefasPendentes))
+}
+
+export const filtrarTarefasCompletas = () => async (dispatch, getState) => {
+  const response = await axios.get(baseURL)
+  
+  const listaTarefasCompletas = response.data.todos.filter (tarefa => {
+    return tarefa.done === true
+  })
+  
+  dispatch(exibirTarefas(listaTarefasCompletas))
 }

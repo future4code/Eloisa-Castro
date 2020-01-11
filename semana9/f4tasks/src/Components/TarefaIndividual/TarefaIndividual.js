@@ -4,8 +4,7 @@ import CheckCircleOutline from '@material-ui/icons/CheckCircleOutline';
 import DeleteForever from '@material-ui/icons/DeleteForever';
 import styled from 'styled-components';
 import { connect } from "react-redux";
-import { completarTarefa } from '../../actions/todos';
-import { excluirTarefa } from '../../actions/todos';
+import { alterarStatusTarefa, deletarTarefa, pegarTarefas } from '../../actions/todos';
 
 
 const ContainerTarefa = styled.div`
@@ -48,24 +47,34 @@ const StyledDeleteForever = styled(DeleteForever)`
     background-color: white;
 `;
 
-function TarefaIndividual(props) {
-    const lista = props.listaDeTarefas
-    const tarefas = lista.map( tarefa => {
+const ContainerIcone = styled.div`
+    background-color: white;
+`;
+
+class TarefaIndividual extends React.Component {
+    componentDidMount() {
+        this.props.pegarTodasTarefas()
+    }
+
+    render() {
+        const lista = this.props.listaDeTarefas
+        const tarefas = lista.map( tarefa => {
+            return (
+                <ContainerTarefa key={tarefa.id}>
+                    <ContainerIcone onClick={() => this.props.completarTarefa(tarefa.id)}>
+                        {tarefa.done ? <StyledCheckCircleOutline /> : <StyledPanoramaFishEye />}
+                    </ContainerIcone>
+                    <TextoDaTarefa estilo={tarefa.done}>{tarefa.text}</TextoDaTarefa>
+                    <StyledDeleteForever onClick={() => this.props.excluirTarefa(tarefa.id)} />
+                </ContainerTarefa>
+            )
+        })
         return (
-            <ContainerTarefa key={tarefa.id}>
-                {tarefa.statusTarefa ?
-                    <StyledCheckCircleOutline onClick={ () => props.completarTarefa(tarefa.id)} /> :
-                    <StyledPanoramaFishEye onClick={ () => props.completarTarefa(tarefa.id)} />}
-                <TextoDaTarefa estilo={tarefa.statusTarefa}>{tarefa.textoTarefa}</TextoDaTarefa>
-                <StyledDeleteForever onClick={ () => props.excluirTarefa(tarefa.id)} />
-            </ContainerTarefa>
+            <div>
+                {tarefas}
+            </div>
         )
-    })
-    return (
-        <div>
-            {tarefas}
-        </div>
-    )
+    }
 }
 
 const mapStateToProps = (state) => {
@@ -77,8 +86,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        completarTarefa: idTarefa => dispatch(completarTarefa(idTarefa)),
-        excluirTarefa: idTarefa => dispatch(excluirTarefa(idTarefa))
+        completarTarefa: idTarefa => dispatch(alterarStatusTarefa(idTarefa)),
+        excluirTarefa: idTarefa => dispatch(deletarTarefa(idTarefa)),
+        pegarTodasTarefas: () => dispatch(pegarTarefas())
     }
 }
 

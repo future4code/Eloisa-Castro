@@ -4,9 +4,10 @@ import './App.css';
 import InputTarefa from './Components/InputTarefa/InputTarefa';
 import TarefaIndividual from './Components/TarefaIndividual/TarefaIndividual';
 import ContainerBotoes from './Components/ContainerBotoes/ContainerBotoes';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 const MainContainer = styled.div`
   width: 700px;
@@ -21,7 +22,7 @@ const TextoTitulo = styled.p`
   margin: 15px 0;
 `;
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 function App() {
   return (
