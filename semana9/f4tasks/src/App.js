@@ -4,6 +4,9 @@ import './App.css';
 import InputTarefa from './Components/InputTarefa/InputTarefa';
 import TarefaIndividual from './Components/TarefaIndividual/TarefaIndividual';
 import ContainerBotoes from './Components/ContainerBotoes/ContainerBotoes';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
+import { Provider } from 'react-redux';
 
 const MainContainer = styled.div`
   width: 700px;
@@ -18,80 +21,18 @@ const TextoTitulo = styled.p`
   margin: 15px 0;
 `;
 
-// action-creators
-
-const addTarefa = (novaTarefa) => {
-  return {
-    type: 'ADICIONAR_TAREFA',
-    payload: {
-      tarefa: novaTarefa
-    }
-  }
-}
-
-const completarTarefa = (tarefaCompleta) => {
-  return {
-    type: 'COMPLETAR_TAREFA',
-    payload: {
-      tarefa: tarefaCompleta
-    }
-  }
-}
-
-const excluirTarefa = (tarefaExcluída) => {
-  return {
-    type: 'REMOVER_TAREFA',
-    payload: {
-      tarefa: tarefaExcluída
-    }
-  }
-}
-
-const completarTodasTarefas = () => {
-  return {
-    type: 'COMPLETAR_TUDO',
-    payload: { }
-  }
-}
-
-const removerCompletas = () => {
-  return {
-    type: 'REMOVER_COMPLETAS',
-    payload: { }
-  }
-}
-
-const filtrarTodasTarefas = () => {
-  return {
-    type: 'FILTRAR_TODAS',
-    payload: { }
-  }
-}
-
-const filtrarTarefasPendentes = () => {
-  return {
-    type: 'FILTRAR_PENDENTES',
-    payload: { }
-  }
-}
-
-const filtrarTarefasCompletas = () => {
-  return {
-    type: 'FILTRAR_COMPLETAS',
-    payload: { }
-  }
-}
+const store = createStore(rootReducer)
 
 function App() {
   return (
-    <MainContainer>
-      <TextoTitulo>F4Tasks</TextoTitulo>
-      <InputTarefa />
-      <TarefaIndividual />
-      <TarefaIndividual />
-      <TarefaIndividual />
-      <ContainerBotoes />
-    </MainContainer>
+    <Provider store={store}>
+      <MainContainer>
+        <TextoTitulo>F4Tasks</TextoTitulo>
+        <InputTarefa />
+        <TarefaIndividual />
+        <ContainerBotoes />
+      </MainContainer>
+    </Provider>
   );
 }
 
