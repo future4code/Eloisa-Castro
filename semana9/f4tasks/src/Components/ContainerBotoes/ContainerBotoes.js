@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import {
+    completarTodasTarefas,
+    removerCompletas,
+    } from '../../actions/todos'
 
 const MainContainer = styled.div`
     display: flex;
@@ -30,10 +35,18 @@ const ContainerFiltros = styled.div`
 
 `;
 
-function ContainerBotoes() {
+function ContainerBotoes(props) {
+    const clicarCompletar = () => {
+        props.completaTodas()
+    }
+
+    const clicarRemoverCompletas = () => {
+        props.excluiCompletas()
+    }
+
     return (
         <MainContainer>
-            <BotaoTarefas>
+            <BotaoTarefas onClick={clicarCompletar}>
                 Marcar todas como completas
             </BotaoTarefas>
 
@@ -43,11 +56,16 @@ function ContainerBotoes() {
                 <BotaoFiltro>Completas</BotaoFiltro>
             </ContainerFiltros>
 
-            <BotaoTarefas>
+            <BotaoTarefas onClick={clicarRemoverCompletas}>
                 Remover completas
             </BotaoTarefas>
         </MainContainer>
     )
 }
 
-export default ContainerBotoes;
+const mapDispatchToProps = dispatch => ({
+    completaTodas: () => dispatch(completarTodasTarefas()),
+    excluiCompletas: () => dispatch(removerCompletas()),
+})
+
+export default connect(null, mapDispatchToProps)(ContainerBotoes);

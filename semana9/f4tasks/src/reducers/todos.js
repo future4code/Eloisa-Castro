@@ -11,23 +11,39 @@ const todos = (state = initialState, action) => {
         statusTarefa: false
       }
       return { ...state, listaDeTarefas: [...state.listaDeTarefas, tarefa]}
+    
     case 'COMPLETAR_TAREFA':
-
-      
-      state.listaDeTarefas.forEach( el => {
-          if (el.id === action.payload.idTarefa) {
-            el.statusTarefa = !el.statusTarefa
-          }
+      const listaModificada = state.listaDeTarefas.map( tarefa => {
+        if (tarefa.id === action.payload.idTarefa) {
+          return {...tarefa, statusTarefa: !tarefa.statusTarefa}
+        } else {
+          return tarefa
+        }
       })
-      return state
+      
+      return { ...state, listaDeTarefas: listaModificada}
+    
     case 'REMOVER_TAREFA':
-      const copiaArray = {...state}
-      const indexTarefa = copiaArray.listaDeTarefas.findIndex( tarefa => {
+      const copiaArray = [...state.listaDeTarefas]
+      const indexTarefa = state.listaDeTarefas.findIndex( tarefa => {
         return tarefa.id === action.payload.idTarefa
       })
-      copiaArray.listaDeTarefas.splice(indexTarefa, 1)
-      state = {...copiaArray}
-      return state
+      copiaArray.splice(indexTarefa, 1)
+      return {...state, listaDeTarefas: copiaArray}
+    
+    case 'COMPLETAR_TUDO':
+      const listaTodaCompleta = state.listaDeTarefas.map( tarefa => {
+        return {...tarefa, statusTarefa: true}
+      })
+
+      return {...state, listaDeTarefas: listaTodaCompleta}
+    
+    case 'REMOVER_COMPLETAS':
+      const listaSemCompletas = state.listaDeTarefas.filter( tarefa => {
+        return tarefa.statusTarefa === false 
+      })
+      return { ...state, listaDeTarefas: listaSemCompletas }
+    
     default:
       return state;
   }

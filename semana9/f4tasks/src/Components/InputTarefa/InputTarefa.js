@@ -10,20 +10,40 @@ const InputDaTarefa = styled.input`
     border: 1px solid gray;
 `;
 
-function InputTarefa(props) {
-    const aoClicarEnter = (e) => {
-        if (e.target.value !== "") {
+class InputTarefa extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            textoInput: "",
+        }
+    }
+
+    aoAlterarInput = (e) => {
+        const novoTexto = e.target.value
+        this.setState({ textoInput: novoTexto})
+    }
+    
+    aoClicarEnter = (e) => {
+        if (this.state.textoInput !== "") {
             if (e.key === 'Enter') {
-                props.adicionarTarefa(e.target.value)
+                this.props.adicionarTarefa(this.state.textoInput)
+                this.setState({ textoInput: ''})
             }
         }
     } 
 
-    return(
-        <div>
-            <InputDaTarefa onKeyPress={aoClicarEnter} placeholder="O que tem que ser feito?" />
-        </div>
-    )
+    render() {
+        return(
+            <div>
+                <InputDaTarefa
+                    onKeyPress={this.aoClicarEnter}
+                    placeholder="O que tem que ser feito?"
+                    value={this.state.textoInput}
+                    onChange={this.aoAlterarInput}
+                />
+            </div>
+        )
+    }
 }
 
 const mapDispatchToProps = dispatch => {
