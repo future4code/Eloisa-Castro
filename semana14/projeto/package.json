@@ -9,11 +9,13 @@
     "start": "tsc && node build/test.js --target es6",
     "create": "tsc && node build/createAccount.js --target es6",
     "getAccounts": "tsc && node build/getAccounts.js --target es6",
-    "getBalance": "tsc && node build/getBalance.js --target es6"
+    "getBalance": "tsc && node build/getBalance.js --target es6",
+    "addToBalance": "tsc && node build/addToBalance.js --target es6"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^12.12.27"
+    "@types/node": "^12.12.27",
+    "moment": "^2.24.0"
   }
 }
