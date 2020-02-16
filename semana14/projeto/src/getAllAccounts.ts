@@ -7,9 +7,3 @@ export const getAllAccounts = new Promise ((resolve, reject) => {
     resolve(dataToUse)
   })
 })
-
-getAllAccounts.then((data: any[]) => {
-  console.log(data)
-}).catch(err => {
-  console.error(err)
-})

@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node build/test.js --target es6",
     "create": "tsc && node build/createAccount.js --target es6",
-    "getAccounts": "tsc && node build/getAllAccounts.js --target es6",
+    "getAccounts": "tsc && node build/getAccounts.js --target es6",
     "getBalance": "tsc && node build/getBalance.js --target es6"
   },
   "author": "",
