@@ -1,0 +1,1 @@
+[{"name":"Astrodev","cpf":"001.001.001-01","birth":"16/02/1980","balance":15,"statement":[]},{"name":"Teste","cpf":"001.001.001-04","birth":"31/10/90","balance":0,"statement":[]},{"name":"Teste2","cpf":"001.001.001-20","birth":"16/02/94","balance":0,"statement":[]},{"name":"Teste","cpf":"001.001.001-02","birth":"16/02/1990","balance":10,"statement":[]}]
