@@ -1,0 +1,52 @@
+{
+  "futureClasses": [
+    {
+      "startDate": "01/12/2019",
+      "endDate": "30/06/2020",
+      "teachers": [],
+      "students": [
+        "Astrodev Sobrinho"
+      ],
+      "patron": "Hamilton"
+    },
+    {
+      "startDate": "29/10/2019",
+      "endDate": "30/05/2020",
+      "teachers": [],
+      "students": [],
+      "patron": "Bouman"
+    },
+    {
+      "startDate": "01/12/2019",
+      "endDate": "30/06/2020",
+      "teachers": [],
+      "students": [],
+      "classNumber": 1
+    }
+  ],
+  "futureStudents": [
+    {
+      "name": "Astrodev Sobrinho",
+      "email": "sobrinho@astrodev",
+      "birth": "24/02/2000",
+      "futureClass": {
+        "startDate": "01/12/2019",
+        "endDate": "30/06/2020",
+        "teachers": [],
+        "students": [],
+        "patron": "Hamilton"
+      }
+    }
+  ],
+  "futureTeachers": [
+    {
+      "name": "Goli",
+      "email": "goli@f4",
+      "birth": "20/05/1995",
+      "specialty": [
+        "HTML",
+        "Orientação a Objetos"
+      ]
+    }
+  ]
+}
