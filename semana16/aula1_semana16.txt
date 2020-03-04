@@ -1,0 +1,34 @@
+/** 1. CINEMA - ATORES */
+// parte 1
+
+USE exercicios;
+
+SELECT first_name, last_name
+FROM actors
+WHERE last_name LIKE "%a%";
+
+SELECT last_name
+FROM actors
+WHERE first_name LIKE "DAN"
+OR first_name LIKE "JULIA";
+
+SELECT first_name, last_name
+FROM actors
+WHERE first_name LIKE "ANGELINA"
+OR first_name LIKE "%B%";
+
+
+// parte 2
+
+USE `bouman-eloisa`;
+
+CREATE TABLE actors(
+	actor_id smallint(5) NOT NULL,
+	first_name varchar(45) NOT NULL,
+	last_name varchar(45) NOT NULL
+);
+
+INSERT INTO actors (actor_id, first_name, last_name)
+VALUES (1, "FERNANDA", "MONTENEGRO"),
+	   (2, "ANTONIO", "FAGUNDES")
+;
