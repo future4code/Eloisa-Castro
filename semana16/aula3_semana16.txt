@@ -1,0 +1,116 @@
+CREATE TABLE livros (
+	id INT UNIQUE,
+	titulo varchar(300),
+	autor_id INT,
+	editora_id INT,
+	ano date,
+	PRIMARY KEY (id),
+	FOREIGN KEY (autor_id) REFERENCES autores(id),
+	FOREIGN KEY (editora_id) REFERENCES editoras(id)
+);
+
+CREATE TABLE autores (
+	id INT UNIQUE,
+	primeiro_nome varchar(100),
+	ultimo_nome varchar(100),
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE editoras (
+	id INT UNIQUE,
+	nome varchar(300),
+	cidade varchar(300),
+	data_fundacao DATETIME,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE usuarios (
+	id INT UNIQUE,
+	primeiro_nome varchar(100),
+	ultimo_nome varchar(100),
+	nacionalidade varchar(100),
+	data_nascimento date,
+	PRIMARY KEY (id)
+);
+
+
+//1
+SELECT CONCAT(primeiro_nome, ' ', ultimo_nome), titulo 
+from autores a
+join livros l
+on a.id = l.autor_id
+where a.id = 5;
+
+//2
+SELECT CONCAT(primeiro_nome, ' ', ultimo_nome), titulo 
+from autores a
+join livros l
+on a.id = l.autor_id
+WHERE a.primeiro_nome like 'A%';
+
+//3
+SELECT CONCAT(primeiro_nome, ' ', ultimo_nome), count(titulo)
+from autores a
+join livros l
+on a.id = l.autor_id
+GROUP BY a.id
+;
+
+//4
+SELECT COUNT(livro_id), titulo
+FROM usuarios_livros ul
+JOIN livros l
+on ul.livro_id = l.id 
+GROUP BY livro_id;
+
+//5
+SELECT CONCAT(primeiro_nome, " ", ultimo_nome), COUNT(usuario_id)
+FROM usuarios_livros ul
+JOIN usuarios u
+ON ul.usuario_id = u.id 
+GROUP BY usuario_id;
+
+//6
+SELECT titulo, nome, data_fundacao
+from editoras e
+join livros l
+on e.id = l.editora_id 
+WHERE data_fundacao < '1990-01-01 00:00:00.0'
+;
+
+//7
+SELECT CONCAT(primeiro_nome, " ", ultimo_nome), data_nascimento, titulo
+FROM usuarios u
+JOIN usuarios_livros ul
+ON u.id = ul.usuario_id
+JOIN livros l
+ON ul.livro_id = l.id
+ORDER BY data_nascimento DESC
+LIMIT 1;
+
+//8
+SELECT nacionalidade 
+FROM usuarios_livros ul
+JOIN usuarios u
+ON ul.usuario_id = u.id
+GROUP BY usuario_id
+ORDER BY COUNT(usuario_id) DESC
+LIMIT 1
+;
+
+//9
+SELECT e.nome 
+FROM usuarios_livros ul 
+JOIN usuarios u
+ON ul.usuario_id = u.id
+JOIN livros l
+ON ul.livro_id = l.id
+JOIN editoras e
+ON l.editora_id = e.id 
+WHERE data_nascimento < "2000-03-07 00:00.0"
+GROUP BY l.editora_id
+ORDER BY COUNT(l.editora_id) DESC
+LIMIT 2
+;
+
+//10
