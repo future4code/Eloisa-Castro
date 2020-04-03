@@ -1,0 +1,16 @@
+/** EXERCÍCIO 1*/
+
+// 1
+// Primeiro, o repositório deveria ser clonado na máquina EC2. Depois o projeto deve ser instalado e buildado.
+
+// 2
+// Projeto escolhido: 4food (https://github.com/future4code/bouman-4food-A.git).
+
+// 3
+//  ssh -i ec2-semana20-future4.pem ubuntu@3.82.107.101
+
+// 4
+// git clone https://github.com/future4code/bouman-4food-A.git
+// cd bouman-4food-A
+// npm i
+// 
