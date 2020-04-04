@@ -10,7 +10,23 @@
 //  ssh -i ec2-semana20-future4.pem ubuntu@3.82.107.101
 
 // 4
+// clonando o repositório
 // git clone https://github.com/future4code/bouman-4food-A.git
+
+// entrando no repositório
 // cd bouman-4food-A
+
+//instalando as dependências
 // npm i
-// 
+
+// 5
+// npm run start
+
+// 6
+// npm run build
+// sudo apt install python
+// cd build
+// sudo python -mSimpleHTTPServer 80
+
+// 7
+// A grande diferença é que o projeto não foi criado diretamente na máquina; o repositório do git contendo todo o código do app foi clonado na máquina. De forma geral, o processo foi bastante semelhante.
