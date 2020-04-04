@@ -1,0 +1,31 @@
+a. Não. Consegui entender o código completamente.
+
+b. "Missing input"
+
+c. "Missing input"
+
+d. "Missing email"
+
+e. "Invalid password"
+
+f. "User is correct"
+
+g. Devemos alterar para o seguinte código:
+
+  if (!user.email) {
+    return {
+      statusCode: 422
+      body: JSON.stringify({ message: "Missing email" })
+    };
+  }
+
+h. O objeto de entrada deve ser:
+{
+  "user": {
+	"info": {
+		"name": "Astrodev",
+		"email": "astrodev@f4.com.br",
+		"password": "123456"
+	}
+  }
+}
