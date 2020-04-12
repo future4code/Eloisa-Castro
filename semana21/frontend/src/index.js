@@ -9,7 +9,7 @@ import rootReducer from "./reducers";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: black;
+    background: #ECEDED;
   }
 `;
 

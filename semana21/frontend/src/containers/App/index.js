@@ -1,6 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+//import { changePlanetAction } from "../../actions/planet";
+import logo from "../../img/logo.jpg";
+import { SignupPage } from "../SignupPage";
+import { LoginPage } from "../LoginPage";
+import { ChangePasswordPage } from "../ChangePasswordPage";
+import { HeaderComponent } from "../../components/HeaderComponent";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -13,21 +19,31 @@ const AppWrapper = styled.div`
   height: 100vh;
 `;
 
-const App = props => {
+const Logo = styled.img`
+  width: 400px;
+`;
 
-  return (
+const App = props => {
+    return (
     <AppWrapper>
+      <HeaderComponent />
+      {/* <Logo src={logo} /> */}
+      {/* <SignupPage/> */}
+      {/* <LoginPage /> */}
+      <ChangePasswordPage />
     </AppWrapper>
   );
 };
 
 const mapStateToProps = state => {
   return {
+    selectedLanguage: state.languages.selectedLanguage,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    //changePlanet: planet => dispatch(changePlanetAction(planet))
   };
 };
 
