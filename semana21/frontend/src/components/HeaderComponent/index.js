@@ -5,10 +5,10 @@ import MenuIcon from '@material-ui/icons/MenuRounded';
 import Button from '@material-ui/core/Button';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-const HeaderContainer = styled.nav`
+const HeaderContainer = styled.header`
   width: 100%;
   display: flex;
-  padding: 10px 20px;
+  padding: 15px 20px;
   align-items: center;
   justify-content: space-between;
   background-color: #FFFFFF;
