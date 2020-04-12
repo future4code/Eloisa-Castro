@@ -29,8 +29,8 @@ const App = props => {
       <HeaderComponent />
       {/* <Logo src={logo} /> */}
       {/* <SignupPage/> */}
-      {/* <LoginPage /> */}
-      <ChangePasswordPage />
+      <LoginPage />
+      {/* <ChangePasswordPage /> */}
     </AppWrapper>
   );
 };
