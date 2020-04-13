@@ -8,7 +8,6 @@ import { createStore } from "redux";
 import rootReducer from "./reducers";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;600&display=swap');
   * {
     margin: 0;
     padding: 0;
