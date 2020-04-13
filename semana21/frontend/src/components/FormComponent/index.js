@@ -32,6 +32,8 @@ export function FormComponent(props) {
               value={input.value}
               onChange={input.handleChange}
               type={ input.type ? input.type : "text"}
+              multiline={input.multiline && true}
+              rowsMax={input.rowsMax && input.rowsMax}
             />
           </Box>
         ))}

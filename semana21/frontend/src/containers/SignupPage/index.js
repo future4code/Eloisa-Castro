@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { FormComponent } from "../../components/FormComponent";
 
-
 export class SignupPage extends React.Component {
   constructor(props) {
     super(props);

@@ -8,6 +8,7 @@ import { LoginPage } from "../LoginPage";
 import { ChangePasswordPage } from "../ChangePasswordPage";
 import { HeaderComponent } from "../../components/HeaderComponent";
 import { VideoPage } from "../VideoPage";
+import { NewVideoPage } from "../NewVideoPage";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -32,7 +33,8 @@ const App = props => {
       {/* <SignupPage/> */}
       {/* <LoginPage /> */}
       {/* <ChangePasswordPage /> */}
-      <VideoPage />
+      {/* <VideoPage /> */}
+      <NewVideoPage />
     </AppWrapper>
   );
 };
