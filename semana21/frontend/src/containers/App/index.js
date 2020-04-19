@@ -2,13 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 //import { changePlanetAction } from "../../actions/planet";
-import logo from "../../img/logo.jpg";
-import { SignupPage } from "../SignupPage";
-import { LoginPage } from "../LoginPage";
-import { ChangePasswordPage } from "../ChangePasswordPage";
-import { HeaderComponent } from "../../components/HeaderComponent";
-import { VideoPage } from "../VideoPage";
-import { NewVideoPage } from "../NewVideoPage";
+import Router from "../Router";
+import { history } from "../..";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -21,27 +16,17 @@ const AppWrapper = styled.div`
   height: 100vh;
 `;
 
-const Logo = styled.img`
-  width: 400px;
-`;
-
 const App = props => {
     return (
     <AppWrapper>
-      <HeaderComponent />
-      {/* <Logo src={logo} /> */}
-      {/* <SignupPage/> */}
-      {/* <LoginPage /> */}
-      {/* <ChangePasswordPage /> */}
-      {/* <VideoPage /> */}
-      <NewVideoPage />
+      <Router history={history} />
     </AppWrapper>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    selectedLanguage: state.languages.selectedLanguage,
+    // selectedLanguage: state.languages.selectedLanguage,
   };
 };
 

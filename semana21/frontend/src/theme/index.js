@@ -37,6 +37,9 @@ export const theme = createMuiTheme({
     body2: {
       fontSize: "1.5rem",
       fontWeight: 500,
+    },
+    subtitle1: {
+      fontSize: "1.2rem",
     }
   },
   spacing: 8,

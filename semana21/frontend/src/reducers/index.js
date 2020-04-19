@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import languages from "./languages";
+import { connectRouter } from "connected-react-router";
 
-const rootReducer = combineReducers({
-  languages: languages,
-});
-
-export default rootReducer;
+export const generateReducers = history =>
+  combineReducers({
+    router: connectRouter(history),
+    
+    // Outros reducers aqui
+  });

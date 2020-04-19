@@ -3,9 +3,11 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createGlobalStyle } from "styled-components";
 import App from "./containers/App";
-
-import { createStore } from "redux";
-import rootReducer from "./reducers";
+import { createStore, applyMiddleware, compose } from "redux";
+import { generateReducers } from "./reducers";
+import { createBrowserHistory } from "history";
+import { routerMiddleware } from "connected-react-router";
+import thunk from "redux-thunk";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -21,7 +23,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const store = createStore(rootReducer);
+export const history = createBrowserHistory();
+
+const middlewares = [
+  applyMiddleware(routerMiddleware(history), thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__
+    ? window.__REDUX_DEVTOOLS_EXTENSION__()
+    : f => f
+];
+
+const store = createStore(generateReducers(history), compose(...middlewares))
 
 render(
   <Provider store={store}>
