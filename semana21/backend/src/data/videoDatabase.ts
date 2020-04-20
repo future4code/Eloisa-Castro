@@ -1,6 +1,6 @@
 import { BaseDatabase } from "./baseDatabase";
 import { VideoGateway } from "../business/gateways/videoGateway";
-import { Video, VideoWithUser } from "../business/entities/video";
+import { Video, VideoWithUser, VideoBasicInfo } from "../business/entities/video";
 import { UserBasicInfo } from "../business/entities/user";
 
 export class VideoDatabase extends BaseDatabase implements VideoGateway {
@@ -16,6 +16,17 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
         input.description,
         input.video,
         input.user_id
+      )
+    );
+  }
+
+  private mapDbVideoToVideoBasicInfo(input?: any): VideoBasicInfo | undefined {
+    return (
+      input &&
+      new VideoBasicInfo(
+        input.id,
+        input.title,
+        input.video
       )
     );
   }
@@ -50,12 +61,12 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
     `)
   }
 
-  public async getAllVideos(): Promise<Video[]> {
+  public async getAllVideos(limit: number, offset: number): Promise<VideoBasicInfo[]> {
     const result = await this.connection.raw(`
       SELECT * FROM ${this.videosTableName}
+      LIMIT ${limit} OFFSET ${offset}
     `)
-
-    return result[0].map((res: any) => this.mapDbVideoToVideo(res)!);
+    return result[0].map((res: any) => this.mapDbVideoToVideoBasicInfo(res)!);
   }
 
   public async getVideoDetails(id: string): Promise<VideoWithUser | undefined> {

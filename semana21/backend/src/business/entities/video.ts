@@ -53,3 +53,23 @@ export class VideoWithUser extends Video {
     return this.user
   }
 }
+
+export class VideoBasicInfo {
+  constructor(
+    private id: string,
+    private title: string,
+    private video: string,
+  ) {}
+  
+  public getId(): string {
+    return this.id
+  }
+  
+  public getTitle(): string {
+    return this.title
+  }
+  
+  public getVideo(): string {
+    return this.video
+  }
+}
