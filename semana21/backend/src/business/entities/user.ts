@@ -36,3 +36,23 @@ export class User {
     this.userPassword = newPassword
   }
 }
+
+export class UserBasicInfo {
+  constructor(
+    private id: string,
+    private name: string,
+    private photo: string,
+  ) {}
+  
+  public getId(): string {
+    return this.id
+  }
+  
+  public getName(): string {
+    return this.name
+  }
+  
+  public getPhoto(): string {
+    return this.photo
+  }
+}

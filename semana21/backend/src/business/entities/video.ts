@@ -1,4 +1,4 @@
-import { User } from "./user"
+import { UserBasicInfo } from "./user"
 
 export class Video {
   constructor(
@@ -44,12 +44,12 @@ export class VideoWithUser extends Video {
     title: string,
     description: string,
     video: string,
-    private user: User,
+    private user: UserBasicInfo,
   ) {
     super(id, title, description, video, user.getId())
   }
 
-  public getUser(): User {
+  public getUser(): UserBasicInfo {
     return this.user
   }
 }

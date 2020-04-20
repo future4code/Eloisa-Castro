@@ -1,6 +1,7 @@
 import { BaseDatabase } from "./baseDatabase";
 import { VideoGateway } from "../business/gateways/videoGateway";
 import { Video, VideoWithUser } from "../business/entities/video";
+import { UserBasicInfo } from "../business/entities/user";
 
 export class VideoDatabase extends BaseDatabase implements VideoGateway {
   private videosTableName = "videos_futuretube";
@@ -57,15 +58,34 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
     return result[0].map((res: any) => this.mapDbVideoToVideo(res)!);
   }
 
-  public async getVideoDetails(id: string): Promise<VideoWithUser> {
+  public async getVideoDetails(id: string): Promise<VideoWithUser | undefined> {
     const result = await this.connection.raw(`
       SELECT * FROM ${this.videosTableName} v
       JOIN ${this.usersTableName} u
       ON v.user_id = u.id
       WHERE user_id = '${id}'
     `)
-    //verificar tratamento do retorno
-    return result[0][0];
+
+    if (!result[0][0]) {
+      return undefined;
+    }
+
+    const user = new UserBasicInfo(
+      result[0][0].user_id,
+      result[0][0].name,
+      result[0][0].photo,
+    );
+
+    return (
+      result[0][0] &&
+      new VideoWithUser(
+        id,
+        result[0][0].title,
+        result[0][0].description,
+        result[0][0].video,
+        user,
+      )
+    );
   }
 
   public async deleteVideo(id: string): Promise<void> {
