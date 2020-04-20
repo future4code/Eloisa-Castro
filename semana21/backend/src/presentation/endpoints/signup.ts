@@ -14,6 +14,7 @@ export const signupEndpoint = async (req: Request, res: Response) => {
 
     const result = await signupUC.execute({
       name: req.body.name,
+      email: req.body.email,
       birthDate: req.body.birthDate,
       photo: req.body.photo,
       password: req.body.password

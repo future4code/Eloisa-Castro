@@ -27,6 +27,7 @@ export class SignupUC {
     const user = new User(
       id,
       input.name,
+      input.email,
       formatedDate,
       input.photo,
       pass
@@ -49,6 +50,7 @@ export class SignupUC {
 
 export interface SignupUCInput {
   name: string,
+  email: string,
   birthDate: Date,
   photo: string
   password: string

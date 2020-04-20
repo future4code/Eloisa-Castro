@@ -16,17 +16,41 @@ export class UsersDatabase extends BaseDatabase implements UserGateway {
     return new Date(input);
   }
 
+  private mapDbUserToUser(input?: any): User | undefined {
+    return (
+      input &&
+      new User(
+        input.id,
+        input.name,
+        input.email,
+        this.mapDbDateToDate(input.birthDate),
+        input.photo,
+        input.userPassword
+      )
+    );
+  }
+
   public async createUser(user: User): Promise<void> {
     await this.connection.raw(`
-      INSERT INTO ${this.usersTableName} (id, name, birthDate, photo, userPassword)
+      INSERT INTO ${this.usersTableName} (id, name, email, birthDate, photo, userPassword)
       VALUES (
         '${user.getId()}',
         '${user.getName()}',
+        '${user.getEmail()}',
         STR_TO_DATE('${this.mapDateToDbDate(user.getBirthDate())}, '%Y-%m-%d'),
         '${user.getPhoto()}',
         '${user.getUserPassword()}'
       )
     `)
+  }
+
+  public async getUserByEmail(email:string): Promise<User | undefined> {
+    const result = await this.connection.raw(`
+      SELECT * FROM ${this.usersTableName}
+      WHERE email = '${email}'
+    `)
+
+    return this.mapDbUserToUser(result[0][0])
   }
   
   public async changeUserPassword(userId: string, password: string): Promise<void> {

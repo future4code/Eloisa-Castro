@@ -2,6 +2,7 @@ export class User {
   constructor(
     private id: string,
     private name: string,
+    private email: string,
     private birthDate: Date,
     private photo: string,
     private userPassword: string,
@@ -13,6 +14,10 @@ export class User {
   
   public getName(): string {
     return this.name
+  }
+  
+  public getEmail(): string {
+    return this.email
   }
 
   public getBirthDate(): Date {
