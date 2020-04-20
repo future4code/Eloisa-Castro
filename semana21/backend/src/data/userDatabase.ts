@@ -1,6 +1,6 @@
 import { BaseDatabase } from "./baseDatabase";
 import { UserGateway } from "../business/gateways/userGateway";
-import { Users } from "../business/entities/users";
+import { User } from "../business/entities/user";
 
 export class UsersDatabase extends BaseDatabase implements UserGateway {
   private usersTableName = "users_futuretube";
@@ -16,7 +16,7 @@ export class UsersDatabase extends BaseDatabase implements UserGateway {
     return new Date(input);
   }
 
-  public async createUser(user: Users): Promise<void> {
+  public async createUser(user: User): Promise<void> {
     await this.connection.raw(`
       INSERT INTO ${this.usersTableName} (id, name, birthDate, photo, userPassword)
       VALUES (

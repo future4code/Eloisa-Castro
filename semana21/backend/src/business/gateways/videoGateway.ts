@@ -1,9 +1,9 @@
-import { Videos } from "../entities/videos";
+import { Video, VideoWithUser } from "../entities/video";
 
 export interface VideoGateway {
-  saveVideo(video: Videos): Promise<void>
-  getVideosByUser(id: string): Promise<Videos[] | undefined>
+  saveVideo(video: Video): Promise<void>
+  getVideosByUser(id: string): Promise<Video[]>
   changeVideoInformations(id: string, title: string, description: string): Promise<void>
-  getAllVideos(): Promise<Videos[]>
-  getVideoDetails(id: string): Promise<any>
+  getAllVideos(): Promise<Video[]>
+  getVideoDetails(id: string): Promise<VideoWithUser>
 }

@@ -1,6 +1,6 @@
-import { Users } from "./users"
+import { User } from "./user"
 
-export class Videos {
+export class Video {
   constructor(
     private id: string,
     private title: string,
@@ -38,18 +38,18 @@ export class Videos {
   }
 }
 
-export class VideosWithUser extends Videos {
+export class VideoWithUser extends Video {
   constructor(
     id: string,
     title: string,
     description: string,
     video: string,
-    private user: Users,
+    private user: User,
   ) {
     super(id, title, description, video, user.getId())
   }
 
-  public getUser(): Users {
+  public getUser(): User {
     return this.user
   }
 }
