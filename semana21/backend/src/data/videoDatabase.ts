@@ -67,4 +67,11 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
     //verificar tratamento do retorno
     return result[0][0];
   }
+
+  public async deleteVideo(id: string): Promise<void> {
+    await this.connection.raw(`
+      DELETE FROM ${this.videosTableName}
+      WHERE id = '${id}'
+    `)
+  }
 }

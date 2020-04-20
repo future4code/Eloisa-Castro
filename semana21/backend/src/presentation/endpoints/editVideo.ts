@@ -1,7 +1,4 @@
 import { Request, Response } from "express";
-import { UsersDatabase } from "../../data/userDatabase";
-import { JwtAuthorizer } from "../../services/jwtAuthorizer";
-import { BcryptService } from "../../services/bcryptService";
 import { EditVideoUC } from "../../business/usecases/editVideo";
 import { VideoDatabase } from "../../data/videoDatabase";
 
@@ -12,7 +9,6 @@ export const editVideoEndpoint = async (req: Request, res: Response) => {
     );
 
     const result = await editVideoUC.execute({
-      token: req.body.token,
       id: req.body.id,
       title: req.body.title,
       description: req.body.description

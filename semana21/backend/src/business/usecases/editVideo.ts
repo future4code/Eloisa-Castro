@@ -7,7 +7,7 @@ export class EditVideoUC {
   ) {}
 
   public async execute(input: EditVideoUCInput): Promise<EditVideoUCOutput> {
-    if (!input.token || !input.id || !input.title || !input.description) {
+    if (!input.id || !input.title || !input.description) {
       throw new InvalidParameterError("Invalid parameters")
     }
 
@@ -20,7 +20,6 @@ export class EditVideoUC {
 }
 
 interface EditVideoUCInput {
-  token: string;
   id: string;
   title: string;
   description: string;

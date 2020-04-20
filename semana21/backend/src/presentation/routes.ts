@@ -5,6 +5,7 @@ import { changePasswordEndpoint } from "./endpoints/changePassword";
 import { uploadVideoEndpoint } from "./endpoints/uploadVideo";
 import { getUserVideoEndpoint } from "./endpoints/getUserVideo";
 import { editVideoEndpoint } from "./endpoints/editVideo";
+import { deleteVideoEndpoint } from "./endpoints/deleteVideo";
 
 const app = express();
 app.use(express.json()); // Linha mágica (middleware)
@@ -15,5 +16,6 @@ app.post('/changePassword', changePasswordEndpoint)
 app.post('/uploadVideo', uploadVideoEndpoint)
 app.get('/getUserVideo', getUserVideoEndpoint)
 app.post('/editVideo', editVideoEndpoint)
+app.delete('/deleteVideo', deleteVideoEndpoint)
 
 export default app;
