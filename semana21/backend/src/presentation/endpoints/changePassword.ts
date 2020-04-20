@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UsersDatabase } from "../../data/userDatabase";
 import { JwtAuthorizer } from "../../services/jwtAuthorizer";
 import { BcryptService } from "../../services/bcryptService";
-import { ChangePasswordUC } from "../../business/usecases/chagePassword";
+import { ChangePasswordUC } from "../../business/usecases/changePassword";
 
 export const changePasswordEndpoint = async (req: Request, res: Response) => {
   try {
@@ -13,7 +13,7 @@ export const changePasswordEndpoint = async (req: Request, res: Response) => {
     );
 
     const result = await changePasswordUC.execute({
-      userId: req.body.id,
+      token: req.body.token,
       oldPassword: req.body.oldPassword,
       newPassword: req.body.newPassword
     });

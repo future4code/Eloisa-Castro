@@ -12,11 +12,14 @@ export class ChangePasswordUC {
   ) {}
 
   public async execute(input: ChangePasswordUCInput): Promise<ChangePasswordUCOutput> {
-    if (!input.oldPassword || !input.newPassword) {
+    if (!input.token || !input.oldPassword || !input.newPassword) {
       throw new InvalidParameterError("Invalid parameters")
     }
 
-    const user = await this.userGateway.getUserById(input.userId);
+    const tokenInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
+    const userId = tokenInfo.userId
+
+    const user = await this.userGateway.getUserById(userId);
 
     if (!user) {
       throw new Error("User not found");
@@ -31,7 +34,7 @@ export class ChangePasswordUC {
       throw new Error("Passoword change fails");
     }
 
-    await this.userGateway.changeUserPassword(input.userId, input.newPassword)
+    await this.userGateway.changeUserPassword(userId, input.newPassword)
     
     const accessToken = this.authenticationGateway.generateToken(
       {
@@ -47,7 +50,7 @@ export class ChangePasswordUC {
 }
 
 interface ChangePasswordUCInput {
-  userId: string;
+  token: string;
   oldPassword: string;
   newPassword: string;
 }
