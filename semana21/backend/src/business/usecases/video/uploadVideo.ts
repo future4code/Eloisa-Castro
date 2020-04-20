@@ -1,8 +1,8 @@
-import { AuthenticationGateway } from "../gateways/authenticationGateway";
-import { InvalidParameterError } from "../errors/InvalidParameterError";
-import { VideoGateway } from "../gateways/videoGateway";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { InvalidParameterError } from "../../errors/InvalidParameterError";
+import { VideoGateway } from "../../gateways/videoGateway";
 import { v4 } from "uuid";
-import { Video } from "../entities/video";
+import { Video } from "../../entities/video";
 
 export class UploadVideoUC {
   constructor(

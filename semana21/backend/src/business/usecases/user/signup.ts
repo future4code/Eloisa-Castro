@@ -1,10 +1,10 @@
 import { v4 } from "uuid";
-import { InvalidParameterError } from "../errors/InvalidParameterError";
-import { UserGateway } from "../gateways/userGateway";
-import { User } from "../entities/user";
-import { AuthenticationGateway } from "../gateways/authenticationGateway";
-import { CryptographyGateway } from "../gateways/cryptographyGateway";
-import { ACCESS_TOKEN_EXPIRES_IN } from "../../services/jwtAuthorizer";
+import { InvalidParameterError } from "../../errors/InvalidParameterError";
+import { UserGateway } from "../../gateways/userGateway";
+import { User } from "../../entities/user";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { CryptographyGateway } from "../../gateways/cryptographyGateway";
+import { ACCESS_TOKEN_EXPIRES_IN } from "../../../services/jwtAuthorizer";
 
 export class SignupUC {
   constructor(

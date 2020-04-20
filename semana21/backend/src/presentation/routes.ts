@@ -1,13 +1,13 @@
 import express from "express";
-import { signupEndpoint } from "./endpoints/signup";
-import { loginEndpoint } from "./endpoints/login";
-import { changePasswordEndpoint } from "./endpoints/changePassword";
-import { uploadVideoEndpoint } from "./endpoints/uploadVideo";
-import { getUserVideoEndpoint } from "./endpoints/getUserVideo";
-import { editVideoEndpoint } from "./endpoints/editVideo";
-import { deleteVideoEndpoint } from "./endpoints/deleteVideo";
-import { getVideoDetailsEndpoint } from "./endpoints/getVideoDetails";
-import { getAllVideosEndpoint } from "./endpoints/getAllVideos";
+import { signupEndpoint } from "./endpoints/user/signup";
+import { loginEndpoint } from "./endpoints/user/login";
+import { changePasswordEndpoint } from "./endpoints/user/changePassword";
+import { uploadVideoEndpoint } from "./endpoints/video/uploadVideo";
+import { getUserVideoEndpoint } from "./endpoints/video/getUserVideo";
+import { editVideoEndpoint } from "./endpoints/video/editVideo";
+import { deleteVideoEndpoint } from "./endpoints/video/deleteVideo";
+import { getVideoDetailsEndpoint } from "./endpoints/video/getVideoDetails";
+import { getAllVideosEndpoint } from "./endpoints/video/getAllVideos";
 
 const app = express();
 app.use(express.json()); // Linha mágica (middleware)

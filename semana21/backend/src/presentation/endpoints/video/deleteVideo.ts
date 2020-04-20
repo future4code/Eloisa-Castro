@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { VideoDatabase } from "../../data/videoDatabase";
-import { DeleteVideoUC } from "../../business/usecases/deleteVideo";
+import { VideoDatabase } from "../../../data/videoDatabase";
+import { DeleteVideoUC } from "../../../business/usecases/video/deleteVideo";
 
 export const deleteVideoEndpoint = async (req: Request, res: Response) => {
   try {
@@ -10,6 +10,7 @@ export const deleteVideoEndpoint = async (req: Request, res: Response) => {
 
     const result = await deleteVideoUC.execute({
       id: req.query.id as string,
+      token: req.headers.token as string,
     });
 
     res.status(200).send(result);

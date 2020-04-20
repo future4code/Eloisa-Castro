@@ -1,7 +1,7 @@
-import { UserGateway } from "../gateways/userGateway";
-import { AuthenticationGateway } from "../gateways/authenticationGateway";
-import { CryptographyGateway } from "../gateways/cryptographyGateway";
-import { ACCESS_TOKEN_EXPIRES_IN } from "../../services/jwtAuthorizer";
+import { UserGateway } from "../../gateways/userGateway";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { CryptographyGateway } from "../../gateways/cryptographyGateway";
+import { ACCESS_TOKEN_EXPIRES_IN } from "../../../services/jwtAuthorizer";
 
 export class LoginUC {
   constructor(

@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-import { JwtAuthorizer } from "../../services/jwtAuthorizer";
-import { UploadVideoUC } from "../../business/usecases/uploadVideo";
-import { VideoDatabase } from "../../data/videoDatabase";
-import { GetUserVideoUC } from "../../business/usecases/getUserVideo";
+import { JwtAuthorizer } from "../../../services/jwtAuthorizer";
+import { VideoDatabase } from "../../../data/videoDatabase";
+import { GetUserVideoUC } from "../../../business/usecases/video/getUserVideo";
 
 export const getUserVideoEndpoint = async (req: Request, res: Response) => {
   try {

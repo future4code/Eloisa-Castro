@@ -1,8 +1,8 @@
-import { UserGateway } from "../gateways/userGateway";
-import { AuthenticationGateway } from "../gateways/authenticationGateway";
-import { CryptographyGateway } from "../gateways/cryptographyGateway";
-import { ACCESS_TOKEN_EXPIRES_IN } from "../../services/jwtAuthorizer";
-import { InvalidParameterError } from "../errors/InvalidParameterError";
+import { UserGateway } from "../../gateways/userGateway";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { CryptographyGateway } from "../../gateways/cryptographyGateway";
+import { ACCESS_TOKEN_EXPIRES_IN } from "../../../services/jwtAuthorizer";
+import { InvalidParameterError } from "../../errors/InvalidParameterError";
 
 export class ChangePasswordUC {
   constructor(

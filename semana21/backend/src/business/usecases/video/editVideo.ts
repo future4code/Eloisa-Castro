@@ -1,5 +1,5 @@
-import { InvalidParameterError } from "../errors/InvalidParameterError";
-import { VideoGateway } from "../gateways/videoGateway";
+import { InvalidParameterError } from "../../errors/InvalidParameterError";
+import { VideoGateway } from "../../gateways/videoGateway";
 
 export class EditVideoUC {
   constructor(
@@ -7,6 +7,10 @@ export class EditVideoUC {
   ) {}
 
   public async execute(input: EditVideoUCInput): Promise<EditVideoUCOutput> {
+    if (!input.token) {
+      throw new Error("Missing authorization token")
+    }
+    
     if (!input.id || !input.title || !input.description) {
       throw new InvalidParameterError("Invalid parameters")
     }
@@ -23,6 +27,7 @@ interface EditVideoUCInput {
   id: string;
   title: string;
   description: string;
+  token: string;
 }
 
 interface EditVideoUCOutput {

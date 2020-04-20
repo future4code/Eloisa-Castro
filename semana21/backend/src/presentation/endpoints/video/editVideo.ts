@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { EditVideoUC } from "../../business/usecases/editVideo";
-import { VideoDatabase } from "../../data/videoDatabase";
+import { EditVideoUC } from "../../../business/usecases/video/editVideo";
+import { VideoDatabase } from "../../../data/videoDatabase";
 
 export const editVideoEndpoint = async (req: Request, res: Response) => {
   try {
@@ -11,7 +11,8 @@ export const editVideoEndpoint = async (req: Request, res: Response) => {
     const result = await editVideoUC.execute({
       id: req.body.id,
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      token: req.headers.token as string
     });
 
     res.status(200).send(result);

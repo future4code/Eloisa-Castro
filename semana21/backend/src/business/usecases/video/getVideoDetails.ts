@@ -1,6 +1,6 @@
-import { InvalidParameterError } from "../errors/InvalidParameterError";
-import { VideoGateway } from "../gateways/videoGateway";
-import { VideoWithUser } from "../entities/video";
+import { InvalidParameterError } from "../../errors/InvalidParameterError";
+import { VideoGateway } from "../../gateways/videoGateway";
+import { VideoWithUser } from "../../entities/video";
 
 export class GetVideoDetailsUC {
   constructor(
@@ -8,6 +8,10 @@ export class GetVideoDetailsUC {
   ) {}
 
   public async execute(input: GetVideoDetailsUCInput): Promise<GetVideoDetailsUCOutput> {
+    if (!input.token) {
+      throw new Error("Missing authorization token")
+    }
+
     if (!input.id) {
       throw new InvalidParameterError("Invalid parameters")
     }
@@ -22,6 +26,7 @@ export class GetVideoDetailsUC {
 
 interface GetVideoDetailsUCInput {
   id: string;
+  token: string;
 }
 
 interface GetVideoDetailsUCOutput {

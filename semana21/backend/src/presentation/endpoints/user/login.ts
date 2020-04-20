@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { UsersDatabase } from "../../data/userDatabase";
-import { JwtAuthorizer } from "../../services/jwtAuthorizer";
-import { BcryptService } from "../../services/bcryptService";
-import { LoginUC } from "../../business/usecases/login";
+import { UsersDatabase } from "../../../data/userDatabase";
+import { JwtAuthorizer } from "../../../services/jwtAuthorizer";
+import { BcryptService } from "../../../services/bcryptService";
+import { LoginUC } from "../../../business/usecases/user/login";
 
 export const loginEndpoint = async (req: Request, res: Response) => {
   try {
