@@ -44,7 +44,7 @@ export class UsersDatabase extends BaseDatabase implements UserGateway {
     `)
   }
 
-  public async getUserByEmail(email:string): Promise<User | undefined> {
+  public async getUserByEmail(email: string): Promise<User | undefined> {
     const result = await this.connection.raw(`
       SELECT * FROM ${this.usersTableName}
       WHERE email = '${email}'
@@ -53,6 +53,15 @@ export class UsersDatabase extends BaseDatabase implements UserGateway {
     return this.mapDbUserToUser(result[0][0])
   }
   
+  public async getUserById(id: string): Promise<User | undefined> {
+    const result = await this.connection.raw(`
+      SELECT * FROM ${this.usersTableName}
+      WHERE email = '${id}'
+    `)
+
+    return this.mapDbUserToUser(result[0][0])
+  }
+
   public async changeUserPassword(userId: string, password: string): Promise<void> {
     await this.connection.raw(`
       UPDATE ${this.usersTableName}
