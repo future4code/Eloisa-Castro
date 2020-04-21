@@ -1,12 +1,16 @@
 import { ExpressMiddleware } from "./services/ExpressMiddleware";
 import app from "../routes";
-import { getMiddlewareResponse } from "./services/ExpressMiddlewareResponse";
+import {
+  getMiddlewareResponse,
+  MiddlewareResponse,
+} from "./services/ExpressMiddlewareResponse";
 import {
   LambdaMiddlewareMapper,
-  LambdaEvent
+  LambdaEvent,
+  LambdaResponse,
 } from "./services/LambdaMiddlewareMapper";
 
-export const handler = async (event: LambdaEvent): Promise<any> => {
+export const handler = async (event: LambdaEvent): Promise<LambdaResponse> => {
   try {
     const mappedEvent = LambdaMiddlewareMapper.toMiddlewareRequest(event);
     console.log("Event: ", mappedEvent);
@@ -17,17 +21,19 @@ export const handler = async (event: LambdaEvent): Promise<any> => {
     const mappedResponse = LambdaMiddlewareMapper.toLambdaResponse(response);
     console.log("Response: ", mappedResponse);
 
-    return LambdaMiddlewareMapper.toLambdaResponse(response);
+    return mappedResponse;
   } catch (err) {
     console.log("Error: ", err);
-    const response = {
+    const errorResponse = LambdaMiddlewareMapper.toLambdaResponse({
+      body: {
+        ...err.body,
+      },
+      headers: {},
       statusCode: err.statusCode || 400,
-      body: JSON.stringify({
-        message: err.message || "An unknown error occured"
-      })
-    };
-    console.log("Error output: ", response);
+    });
 
-    return response;
+    console.log("ErrorResponse: ", errorResponse);
+
+    return errorResponse;
   }
 };

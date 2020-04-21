@@ -1,6 +1,6 @@
 import {
   MiddlewareRequest,
-  getMiddlewareRequest
+  getMiddlewareRequest,
 } from "./ExpressMiddlewareRequest";
 import { MiddlewareResponseData } from "./ExpressMiddlewareResponse";
 
@@ -13,15 +13,20 @@ export class LambdaMiddlewareMapper {
       params: event.pathParams,
       query: event.queryStringParameters,
       method: event.httpMethod,
-      body: event.body && JSON.parse(event.body)
+      body: event.body && JSON.parse(event.body),
     });
   }
 
   static toLambdaResponse(data: MiddlewareResponseData): LambdaResponse {
     return {
-      headers: data.headers,
+      headers: {
+        ...data.headers,
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify(data.body),
-      statusCode: data.statusCode
+      statusCode: data.statusCode,
     };
   }
 }
