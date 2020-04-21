@@ -34,7 +34,8 @@ export class ChangePasswordUC {
       throw new Error("Passoword change fails");
     }
 
-    await this.userGateway.changeUserPassword(userId, input.newPassword)
+    const encryptedPassword = await this.cryptographyGateway.encrypt(input.newPassword)
+    await this.userGateway.changeUserPassword(userId, encryptedPassword)
     
     const accessToken = this.authenticationGateway.generateToken(
       {

@@ -20,7 +20,7 @@ export class SignupUC {
       throw new InvalidParameterError("Invalid parameters")
     }
 
-    const formatedDate = new Date(input.birthDate)
+    const dateFormated = new Date(input.birthDate)
 
     const pass = await this.cryptographyGateway.encrypt(input.password)
 
@@ -28,7 +28,7 @@ export class SignupUC {
       id,
       input.name,
       input.email,
-      formatedDate,
+      dateFormated,
       input.photo,
       pass
     )

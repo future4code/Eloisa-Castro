@@ -4,7 +4,7 @@ export abstract class BaseDatabase {
   protected connection = knex({
     client: "mysql",
     connection: {
-      host: "ec2-3-86-209-89.compute-1.amazonaws.com",
+      host: "ec2-52-23-228-187.compute-1.amazonaws.com",
       port: 3306,
       database: "eloisadb",
       user: "eloisa",

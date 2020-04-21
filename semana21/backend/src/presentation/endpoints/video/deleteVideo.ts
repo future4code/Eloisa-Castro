@@ -9,8 +9,8 @@ export const deleteVideoEndpoint = async (req: Request, res: Response) => {
     );
 
     const result = await deleteVideoUC.execute({
-      id: req.query.id as string,
-      token: req.headers.token as string,
+      id: req.params.id as string,
+      token: req.headers.auth as string,
     });
 
     res.status(200).send(result);

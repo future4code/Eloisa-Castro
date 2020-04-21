@@ -12,7 +12,7 @@ export const editVideoEndpoint = async (req: Request, res: Response) => {
       id: req.body.id,
       title: req.body.title,
       description: req.body.description,
-      token: req.headers.token as string
+      token: req.headers.auth as string
     });
 
     res.status(200).send(result);

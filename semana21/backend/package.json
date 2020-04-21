@@ -10,7 +10,7 @@
     "test": "node ./node_modules/jest/bin/jest.js",
     "ziplambda": "bestzip ../lambda.zip ./*",
     "build": "rm -rf build && tsc",
-    "postbuild": "cp ./package.json build && cd build && yarn && npm run ziplambda"
+    "postbuild": "cp ./package.json build && cd build && npm i && npm run ziplambda"
   },
   "author": "",
   "license": "ISC",

@@ -74,7 +74,7 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
       SELECT * FROM ${this.videosTableName} v
       JOIN ${this.usersTableName} u
       ON v.user_id = u.id
-      WHERE user_id = '${id}'
+      WHERE v.id = '${id}'
     `)
 
     if (!result[0][0]) {

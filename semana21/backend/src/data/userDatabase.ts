@@ -37,7 +37,7 @@ export class UsersDatabase extends BaseDatabase implements UserGateway {
         '${user.getId()}',
         '${user.getName()}',
         '${user.getEmail()}',
-        STR_TO_DATE('${this.mapDateToDbDate(user.getBirthDate())}, '%Y-%m-%d'),
+        STR_TO_DATE('${this.mapDateToDbDate(user.getBirthDate())}', '%Y-%m-%d'),
         '${user.getPhoto()}',
         '${user.getUserPassword()}'
       )
@@ -56,7 +56,7 @@ export class UsersDatabase extends BaseDatabase implements UserGateway {
   public async getUserById(id: string): Promise<User | undefined> {
     const result = await this.connection.raw(`
       SELECT * FROM ${this.usersTableName}
-      WHERE email = '${id}'
+      WHERE id = '${id}'
     `)
 
     return this.mapDbUserToUser(result[0][0])

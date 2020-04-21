@@ -16,10 +16,10 @@ app.post('/signup', signupEndpoint)
 app.post('/login', loginEndpoint)
 app.post('/changePassword', changePasswordEndpoint)
 app.post('/uploadVideo', uploadVideoEndpoint)
-app.get('/getUserVideo', getUserVideoEndpoint)
+app.get('/getUserVideo/', getUserVideoEndpoint)
 app.post('/editVideo', editVideoEndpoint)
-app.delete('/deleteVideo', deleteVideoEndpoint)
-app.get('/getVideoDetails', getVideoDetailsEndpoint)
+app.delete('/deleteVideo/:id', deleteVideoEndpoint)
+app.get('/getVideoDetails/:id', getVideoDetailsEndpoint)
 app.get('/getAllVideos', getAllVideosEndpoint)
 
 export default app;
