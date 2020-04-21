@@ -19,12 +19,12 @@ export class FeedPage extends React.Component {
   }
 
   componentDidMount() {
-    const token = window.localStorage.getItem("token")
-    if (token === null) {
-      this.props.goToLoginPage()
-    } else {
-      this.props.getVideos()
-    }
+    // const token = window.localStorage.getItem("token")
+    // if (token === null) {
+    //   this.props.goToLoginPage()
+    // } else {
+    //   this.props.getVideos()
+    // }
   }
 
   render() {

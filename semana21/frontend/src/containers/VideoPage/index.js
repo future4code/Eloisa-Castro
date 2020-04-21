@@ -21,7 +21,7 @@ const ButtonWrapper = styled.div`
 export const VideoPage = props => {
   let pageToRender
   if (window.localStorage.getItem('token') || props.videoDetails === undefined) {
-    props.goToFeedPage()
+    // props.goToFeedPage()
   } else {
     pageToRender = (
       <ThemeProvider theme={theme}>

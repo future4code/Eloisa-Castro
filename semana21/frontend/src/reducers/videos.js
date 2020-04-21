@@ -1,5 +1,5 @@
 const initialState = {
-  allVideos: [],
+  allVideos: null,
   videoDetails: null,
 }
 

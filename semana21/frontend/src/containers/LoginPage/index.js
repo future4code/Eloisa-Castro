@@ -20,10 +20,10 @@ export class LoginPage extends React.Component {
   }
 
   componentDidMount() {
-    const token = window.localStorage.getItem("token")
-    if (token !== null) {
-      this.props.goToFeedPage()
-    }
+    // const token = window.localStorage.getItem("token")
+    // if (token !== null) {
+    //   this.props.goToFeedPage()
+    // }
   }
 
   handleInputChange = (e) => {

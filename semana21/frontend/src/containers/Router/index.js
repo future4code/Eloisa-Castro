@@ -7,10 +7,12 @@ import ChangePasswordPage from "../ChangePasswordPage";
 import VideoPage from "../VideoPage";
 import NewVideoPage from "../NewVideoPage";
 import FeedPage from "../FeedPage";
+import HomePage from "../HomePage";
 
 export const routes = {
   loginPage: "/",
   signupPage: "/signup",
+  homePage: "/home",
   changePassword: "/changePassword",
   newVideo: "/newVideo",
   videoFeed: "/videos",
@@ -24,6 +26,7 @@ function Router(props) {
       <Switch>
         <Route exact path={routes.loginPage} component={LoginPage} />
         <Route exact path={routes.signupPage} component={SignupPage} />
+        <Route exact path={routes.homePage} component={HomePage} />
         <Route exact path={routes.changePassword} component={ChangePasswordPage} />
         <Route exact path={routes.newVideo} component={NewVideoPage} />
         <Route exact path={routes.videoFeed} component={FeedPage} />
