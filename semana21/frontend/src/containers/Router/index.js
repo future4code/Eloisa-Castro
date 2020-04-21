@@ -1,12 +1,12 @@
 import React from "react";
 import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
-import { SignupPage } from "../SignupPage";
-import { LoginPage } from "../LoginPage";
-import { ChangePasswordPage } from "../ChangePasswordPage";
-import { VideoPage } from "../VideoPage";
-import { NewVideoPage } from "../NewVideoPage";
-import { FeedPage } from "../FeedPage";
+import SignupPage from "../SignupPage";
+import LoginPage from "../LoginPage";
+import ChangePasswordPage from "../ChangePasswordPage";
+import VideoPage from "../VideoPage";
+import NewVideoPage from "../NewVideoPage";
+import FeedPage from "../FeedPage";
 
 export const routes = {
   loginPage: "/",

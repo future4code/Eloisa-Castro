@@ -37,7 +37,7 @@ const store = createStore(generateReducers(history), compose(...middlewares))
 render(
   <Provider store={store}>
     <GlobalStyle />
-    <App />
+    <App history={history} />
   </Provider>,
   document.getElementById("root")
 );

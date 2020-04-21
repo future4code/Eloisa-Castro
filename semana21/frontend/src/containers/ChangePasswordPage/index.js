@@ -1,6 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { FormComponent } from "../../components/FormComponent";
+import { changePassword } from "../../actions/user";
+import { HeaderComponent } from "../../components/HeaderComponent";
+import { ThemeProvider } from '@material-ui/styles';
+import { theme } from "../../theme";
+import { push } from "connected-react-router";
+import { routes } from "../Router/";
 
 export class ChangePasswordPage extends React.Component {
   constructor(props) {
@@ -12,10 +18,41 @@ export class ChangePasswordPage extends React.Component {
     }
   }
 
+  // componentDidMount() {
+  //   const token = window.localStorage.getItem("token")
+  //   if (token === null) {
+  //     this.props.goToLoginPage()
+  //   }
+  // }
+
   handleInputChange = (e) => {
     const { name, value } = e.target
     this.setState({ ...this.state, [name]: value })
   };
+
+  onClickChangePassword = () => {
+    const { actualPassword, newPassword, newPasswordConfirm } = this.state
+    if (newPassword === newPasswordConfirm) {
+      const reqData = {
+        oldPassword: actualPassword,
+        newPassword: newPassword
+      }
+
+      this.props.changePassword(reqData)
+
+      this.setState({
+        actualPassword: "",
+        newPassword: "",
+        newPasswordConfirm: "",
+      })
+    } else {
+      window.alert("As senhas digitadas são diferentes.")
+      this.setState({
+        newPassword: "",
+        newPasswordConfirm: "",
+      })
+    }
+  }
 
   render() {
     const formInputsData = [
@@ -42,24 +79,17 @@ export class ChangePasswordPage extends React.Component {
       }
     ]
     return (
-      <div>
-        <FormComponent formInputs={formInputsData} buttonText={"Salvar"} />
-      </div>
+      <ThemeProvider theme={theme}>
+        <HeaderComponent />
+        <FormComponent formInputs={formInputsData} buttonText={"Salvar"} onButtonClick={this.onClickChangePassword}/>
+      </ThemeProvider>
     );
   }
 };
 
-const mapStateToProps = state => {
-  return {
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  goToLoginPage: () => dispatch(push(routes.loginPage)),
+  changePassword: (data) => dispatch(changePassword(data))
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChangePasswordPage);
+export default connect(null, mapDispatchToProps)(ChangePasswordPage);

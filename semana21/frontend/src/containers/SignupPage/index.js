@@ -1,6 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { FormComponent } from "../../components/FormComponent";
+import { LogoComponent } from "../../components/Logo";
+import { ThemeProvider } from '@material-ui/styles';
+import { theme } from "../../theme";
+import { push } from "connected-react-router";
+import { routes } from "../Router/";
+import { userSignup } from "../../actions/user";
 
 export class SignupPage extends React.Component {
   constructor(props) {
@@ -9,9 +15,16 @@ export class SignupPage extends React.Component {
       name: "",
       email: "",
       birthDate: "",
+      photo: "",
       password: "",
       passwordConfirm: "",
-      photo: "",
+    }
+  }
+
+  componentDidMount() {
+    const token = window.localStorage.getItem("token")
+    if (token !== null) {
+      this.props.goToFeedPage()
     }
   }
 
@@ -19,6 +32,45 @@ export class SignupPage extends React.Component {
     const { name, value } = e.target
     this.setState({ ...this.state, [name]: value })
   };
+
+  onClickSignup = () => {
+    const { name, email, birthDate, photo, password, passwordConfirm } = this.state
+    
+    //verifica se o usuário não inseriu apenas um espaço, ao invés de digitar um texto
+    const nameIsValid = name && name.trim();
+    const emailIsValid = email && email.trim();
+    const birthDateIsValid = birthDate && birthDate.trim();
+    const photoIsValid = photo && photo.trim();
+    const passwordIsValid = password && password.trim();
+    
+    if(nameIsValid && emailIsValid && birthDateIsValid && passwordIsValid && photoIsValid !== ''){
+      if (password === passwordConfirm) {
+        const signupData = {
+          name,
+          email,
+          birthDate,
+          photo,
+          password
+        }
+
+        this.props.onSignup(signupData)
+        
+        this.setState({
+          name: '',
+          email: '',
+          birthDate: '',
+          photo: '',
+          password: '',
+          confirmPassword: '',
+        })
+      } else {
+        window.alert("As senhas digitadas são diferentes.")
+      }
+    } else {
+      window.alert("Insira dados válidos.")
+    }
+  }
+
 
   render() {
     const formInputsData = [
@@ -43,6 +95,12 @@ export class SignupPage extends React.Component {
         type: "date"
       },
       {
+        name: "photo",
+        label: "Foto",
+        value: this.state.photo,
+        handleChange: this.handleInputChange
+      },
+      {
         name: "password",
         label: "Senha",
         value: this.state.password,
@@ -56,17 +114,12 @@ export class SignupPage extends React.Component {
         handleChange: this.handleInputChange,
         type: "password"
       },
-      {
-        name: "photo",
-        label: "Foto",
-        value: this.state.photo,
-        handleChange: this.handleInputChange
-      },
     ]
     return (
-      <div>
-        <FormComponent formInputs={formInputsData} buttonText={"Signup"} />
-      </div>
+      <ThemeProvider theme={theme}>
+        <LogoComponent />
+        <FormComponent formInputs={formInputsData} buttonText={"Signup"} onButtonClick={this.onClickSignup}/>
+      </ThemeProvider>
     );
   }
 };
@@ -76,10 +129,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  goToFeedPage: () => dispatch(push(routes.videoFeed)),
+  onSignup: (signupData) => dispatch(userSignup(signupData))
+});
 
 export default connect(
   mapStateToProps,

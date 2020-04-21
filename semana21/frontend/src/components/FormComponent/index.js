@@ -19,9 +19,14 @@ const StyledTextField = styled(TextField)`
 `;
 
 export function FormComponent(props) {
+  const onFormSubmit = (e) => {
+    e.preventDefault()
+    props.onButtonClick()
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      <FormContainer noValidate>
+      <FormContainer onSubmit={onFormSubmit} noValidate>
         {props.formInputs.map( input => (
           <Box m={2}>
             <StyledTextField 
@@ -37,7 +42,7 @@ export function FormComponent(props) {
             />
           </Box>
         ))}
-        <Button variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary">
           {props.buttonText}
         </Button>
       </FormContainer>
