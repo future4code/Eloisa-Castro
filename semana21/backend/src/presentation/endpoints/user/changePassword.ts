@@ -13,7 +13,7 @@ export const changePasswordEndpoint = async (req: Request, res: Response) => {
     );
 
     const result = await changePasswordUC.execute({
-      token: req.headers.token as string,
+      token: req.headers.auth as string,
       oldPassword: req.body.oldPassword,
       newPassword: req.body.newPassword
     });

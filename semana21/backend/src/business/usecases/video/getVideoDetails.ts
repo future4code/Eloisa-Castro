@@ -19,7 +19,7 @@ export class GetVideoDetailsUC {
     const result = await this.videoGateway.getVideoDetails(input.id)
     
     return {
-      result
+      video: result
     };
   }
 }
@@ -30,5 +30,5 @@ interface GetVideoDetailsUCInput {
 }
 
 interface GetVideoDetailsUCOutput {
-  result: VideoWithUser | undefined;
+  video: VideoWithUser | undefined;
 }

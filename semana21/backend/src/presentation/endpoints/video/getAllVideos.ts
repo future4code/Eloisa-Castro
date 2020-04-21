@@ -9,8 +9,8 @@ export const getAllVideosEndpoint = async (req: Request, res: Response) => {
     )
 
     const result = await getAllVideosUC.execute({
-      page: Number(req.query.page),
-      token: req.headers.token as string
+      page: Number(req.params),
+      token: req.headers.auth as string
     });
 
     res.status(200).send(result);

@@ -14,7 +14,7 @@ export const uploadVideoEndpoint = async (req: Request, res: Response) => {
       title: req.body.title,
       description: req.body.description,
       video: req.body.video,
-      token: req.headers.token as string,
+      token: req.headers.auth as string,
     })
 
     res.status(200).send(result)

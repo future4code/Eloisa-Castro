@@ -46,7 +46,7 @@ export const saveVideo = (videoData) => async (dispatch) => {
 
 export const fetchVideoDetails = (id) => async (dispatch) => {
   try {
-      const response = await axios.get(`${baseUrl}/videoDetails/${id}`, requestHeader)
+      const response = await axios.get(`${baseUrl}/getVideoDetails/${id}`, requestHeader)
       dispatch(setVideoDetails(response.data.video))
       dispatch(push(routes.videoDetails))
   } catch (err) {

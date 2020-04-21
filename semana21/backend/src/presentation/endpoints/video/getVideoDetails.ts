@@ -9,7 +9,7 @@ export const getVideoDetailsEndpoint = async (req: Request, res: Response) => {
     );
 
     const result = await getVideoDetailsUC.execute({
-      id: req.query.id as string,
+      id: String(req.params),
       token: req.headers.token as string
     });
 

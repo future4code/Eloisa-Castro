@@ -35,7 +35,7 @@ export class ChangePasswordPage extends React.Component {
     if (newPassword === newPasswordConfirm) {
       const reqData = {
         oldPassword: actualPassword,
-        newPassword: newPassword
+        newPassword
       }
 
       this.props.changePassword(reqData)
