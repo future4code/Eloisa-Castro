@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { FeedPageComponent } from "../../components/FeedPageComponent";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
-import { fetchVideos } from "../../actions/video";
+import { fetchVideos } from "../../actions/videos";
 import { HeaderComponent } from "../../components/HeaderComponent";
 
 const FeedWrapper = styled.div`
@@ -19,12 +19,12 @@ export class FeedPage extends React.Component {
   }
 
   componentDidMount() {
-    // const token = window.localStorage.getItem("token")
-    // if (token === null) {
-    //   this.props.goToLoginPage()
-    // } else {
-    //   this.props.getVideos()
-    // }
+    const token = window.localStorage.getItem("token")
+    if (token === null) {
+      this.props.goToLoginPage()
+    } else {
+      this.props.getVideos()
+    }
   }
 
   render() {

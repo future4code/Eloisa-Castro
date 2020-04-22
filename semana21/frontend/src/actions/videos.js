@@ -18,39 +18,39 @@ export const setVideoDetails = (video) => ({
 })
 
 // Integração com API
-const baseUrl = ""
+const baseUrl = " https://1s6erpqhpd.execute-api.us-east-1.amazonaws.com/v1"
 
 const token = window.localStorage.getItem("token")
 const requestHeader = {
-    headers: {
-      auth: token
-    }
+  headers: {
+    auth: token
+  }
 }
 
 export const fetchVideos = () => async (dispatch) => {
   try {
-      const response = await axios.get(`${baseUrl}/getAllVideos`, requestHeader)
-      dispatch(setVideos(response.data.videos))
+    const response = await axios.get(`${baseUrl}/getAllVideos`, requestHeader)
+    dispatch(setVideos(response.data.videos))
   } catch (error) {
-      window.alert(error.response.data.message)
+    window.alert(error.response.data.message)
   }
 }
 
 export const saveVideo = (videoData) => async (dispatch) => {
   try {
-      await axios.post(`${baseUrl}/uploadVideo`, videoData, requestHeader)
+    await axios.post(`${baseUrl}/uploadVideo`, videoData, requestHeader)
   } catch (error) {
-      window.alert(error.response.data.message)
+    window.alert(error.response.data.message)
   }
 }
 
 export const fetchVideoDetails = (id) => async (dispatch) => {
   try {
-      const response = await axios.get(`${baseUrl}/getVideoDetails/${id}`, requestHeader)
-      dispatch(setVideoDetails(response.data.video))
-      dispatch(push(routes.videoDetails))
+    const response = await axios.get(`${baseUrl}/getVideoDetails/${id}`, requestHeader)
+    dispatch(setVideoDetails(response.data.video))
+    dispatch(push(routes.videoDetails))
   } catch (err) {
-      window.alert(err.response.data.message)
+    window.alert(err.response.data.message)
   }
 }
 

@@ -20,8 +20,8 @@ const ButtonWrapper = styled.div`
 
 export const VideoPage = props => {
   let pageToRender
-  if (window.localStorage.getItem('token') || props.videoDetails === undefined) {
-    // props.goToFeedPage()
+  if (!window.localStorage.getItem('token') || props.videoDetails === undefined) {
+    props.goToHomePage()
   } else {
     pageToRender = (
       <ThemeProvider theme={theme}>
@@ -58,8 +58,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  goToFeedPage: () => dispatch(push(routes.videoFeed)),
-
+  goToHomePage: () => dispatch(push(routes.homePage)),
 });
 
 export default connect(

@@ -18,12 +18,12 @@ export class ChangePasswordPage extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   const token = window.localStorage.getItem("token")
-  //   if (token === null) {
-  //     this.props.goToLoginPage()
-  //   }
-  // }
+  componentDidMount() {
+    const token = window.localStorage.getItem("token")
+    if (token === null) {
+      this.props.goToLoginPage()
+    }
+  }
 
   handleInputChange = (e) => {
     const { name, value } = e.target

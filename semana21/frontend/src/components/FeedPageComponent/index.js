@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import { connect } from "react-redux";
-import { fetchVideoDetails } from "../../actions/video";
+import { fetchVideoDetails } from "../../actions/videos";
 
 const StyledVideo = styled.video`
   height: 150px;

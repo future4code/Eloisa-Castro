@@ -4,7 +4,7 @@ import { FormComponent } from "../../components/FormComponent";
 import { ThemeProvider } from '@material-ui/styles';
 import { theme } from "../../theme";
 import { HeaderComponent } from "../../components/HeaderComponent";
-import { saveVideo } from "../../actions/video";
+import { saveVideo } from "../../actions/videos";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
 
@@ -18,12 +18,12 @@ export class NewVideoPage extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   const token = window.localStorage.getItem("token")
-  //   if (token === null) {
-  //     this.props.goToLoginPage()
-  //   }
-  // }
+  componentDidMount() {
+    const token = window.localStorage.getItem("token")
+    if (token === null) {
+      this.props.goToLoginPage()
+    }
+  }
 
   handleInputChange = (e) => {
     const { name, value } = e.target

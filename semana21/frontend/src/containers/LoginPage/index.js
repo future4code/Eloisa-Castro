@@ -20,10 +20,10 @@ export class LoginPage extends React.Component {
   }
 
   componentDidMount() {
-    // const token = window.localStorage.getItem("token")
-    // if (token !== null) {
-    //   this.props.goToFeedPage()
-    // }
+    const token = window.localStorage.getItem("token")
+    if (token !== null) {
+      this.props.goToHomePage()
+    }
   }
 
   handleInputChange = (e) => {
@@ -83,7 +83,7 @@ export class LoginPage extends React.Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  goToFeedPage: () => dispatch(push(routes.videoFeed)),
+  goToHomePage: () => dispatch(push(routes.homePage)),
   goToSignupPage: () => dispatch(push(routes.signupPage)),
   login: (email, password) => dispatch(userLogin(email, password))
 });

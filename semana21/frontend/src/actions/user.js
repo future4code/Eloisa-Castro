@@ -2,7 +2,7 @@ import axios from "axios";
 import { push } from "connected-react-router";
 import { routes } from "../containers/Router"
 
-export const baseUrl = ""
+export const baseUrl = "https://1s6erpqhpd.execute-api.us-east-1.amazonaws.com/v1"
 const token = window.localStorage.getItem("token")
 const requestHeader = {
   headers: {
