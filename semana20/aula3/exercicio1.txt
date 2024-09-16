@@ -1,0 +1,31 @@
+/** Tarefa 1 */
+exports.handler = async (event) => {
+    const reqBody = JSON.parse(event.body)
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify(`Hello ${reqBody.name}`),
+    };
+    return response;
+};
+
+/** Tarefa 2 */
+// 1
+verifyExistence(undefined) --> retorna false
+verifyExistence(null) --> retorna false
+verifyExistence("Teste") --> retorna true
+
+// 2
+Porque o retorno de event.body é uma string.
+
+// 3
+Essa lambda retorna o código 200 quando for passado um body ou um query parameter.
+
+// 4
+Essa lambda retorna o código 400 quando não é enviado um body (ou quando este é vazio) e não é enviado um query parameter.
+
+// 5
+Testes realizados:
+- com body vazio e sem query parameters --> retorno código 400
+- com informações no bodye e sem query parameters --> retorno código 200
+- sem informações no bodye e com query parameters --> retorno código 200
+- com informações no bodye e query parameters --> retorno código 200
